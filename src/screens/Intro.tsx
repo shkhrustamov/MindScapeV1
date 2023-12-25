@@ -7,7 +7,7 @@ const Intro = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text onPress={() => navigate('Dashboard')}>Intro</Text>
+      <Text onPress={() => navigate('Main')}>Intro</Text>
     </View>
   );
 };

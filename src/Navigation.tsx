@@ -11,7 +11,23 @@ const Stack = createNativeStackNavigator();
 
 function Tabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: '#16171A',
+          borderTopWidth: 0,
+          borderColor: '#16171A',
+        },
+        headerStyle: {
+          backgroundColor: '#16171A',
+        },
+        headerTintColor: '#F2F2FA',
+        tabBarActiveTintColor: '#6262D9',
+        tabBarInactiveTintColor: 'grey',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
       <Tab.Screen name="Explore" component={Explore} />
       <Tab.Screen name="Search" component={Search} />
     </Tab.Navigator>
@@ -23,7 +39,7 @@ export function Navigation() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Intro" component={Intro} />
-        <Stack.Screen name="Dashboard" component={Tabs} />
+        <Stack.Screen name="Main" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
