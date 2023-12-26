@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
+import {ScrollView, Text, View} from 'react-native';
+import Today from '../components/Today.tsx';
 
 const Explore = () => {
   return (
-    <View style={{flex: 1, padding: 24, backgroundColor: '#16171A'}}>
-      <Text style={{color: '#fff'}}>Explore</Text>
-    </View>
+    <ScrollView style={{flex: 1, backgroundColor: '#16171A'}}>
+      <Today />
+    </ScrollView>
   );
 };
 

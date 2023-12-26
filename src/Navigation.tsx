@@ -72,7 +72,7 @@ function Navigation() {
           options={{
             tabBarLabel: 'Explore',
             tabBarIcon: ({color}) => (
-              <TabIcon screenName="Explore" name="web" color={color} />
+              <TabIcon screenName="Explore" name="compass" color={color} />
             ),
           }}
         />
