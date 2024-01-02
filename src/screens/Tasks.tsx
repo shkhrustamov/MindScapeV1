@@ -1,10 +1,13 @@
 import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import Haptic from 'react-native-haptic-feedback';
+import {ScrollView, Text, TouchableOpacity} from 'react-native';
 
 const Tasks = () => {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
-      <Text>hello</Text>
+      <TouchableOpacity>
+        <Text>hello</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };

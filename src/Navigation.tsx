@@ -8,6 +8,7 @@ import Tasks from './screens/Tasks.tsx';
 import Discover from './screens/Discover.tsx';
 import Challenges from './screens/Challenges.tsx';
 import Journey from './screens/Journey.tsx';
+import Haptic from 'react-native-haptic-feedback';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,10 @@ const TabIcon = ({
   const {navigate} = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigate(screenName)}
+      onPress={() => {
+        navigate(screenName);
+        Haptic.trigger('soft');
+      }}
       hitSlop={{top: 16, bottom: 16, left: 16, right: 16}}>
       <MaterialCommunityIcons name={name} color={color} size={32} />
     </TouchableOpacity>
@@ -75,6 +79,7 @@ function Navigation() {
           component={Tasks}
           options={{
             tabBarLabel: 'Tasks',
+            headerTitle: 'MindScape',
             tabBarIcon: ({color}) => (
               <TabIcon screenName="Tasks" name="sticker-check" color={color} />
             ),
