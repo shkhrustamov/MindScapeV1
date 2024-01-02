@@ -4,8 +4,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {TouchableOpacity} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Explore from './screens/Explore.tsx';
-import Search from './screens/Search.tsx';
+import Tasks from './screens/Tasks.tsx';
+import Discover from './screens/Discover.tsx';
+import Challenges from './screens/Challenges.tsx';
+import Journey from './screens/Journey.tsx';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,8 +35,10 @@ const Stack = createNativeStackNavigator();
 const H = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Explore" component={Explore} />
-      <Stack.Screen name="Search" component={Search} />
+      <Stack.Screen name="Tasks" component={Tasks} />
+      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Challenges" component={Challenges} />
+      <Stack.Screen name="Journey" component={Journey} />
     </Stack.Navigator>
   );
 };
@@ -49,40 +53,68 @@ function Navigation() {
           },
         }}
         screenOptions={{
-          tabBarActiveTintColor: '#6262D9',
+          tabBarActiveTintColor: '#1C2939',
           tabBarInactiveTintColor: 'grey',
           tabBarStyle: {
-            backgroundColor: '#16171A',
+            backgroundColor: '#fff',
             borderTopWidth: 0,
             borderColor: '#16171A',
           },
           headerStyle: {
-            backgroundColor: '#16171A',
+            backgroundColor: '#fff',
           },
           tabBarShowLabel: true,
           tabBarLabelStyle: {fontSize: 14},
-          headerTintColor: '#fff',
+          headerTintColor: '#1C2939',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
         }}>
         <Tab.Screen
-          name="Explore"
-          component={Explore}
+          name="Tasks"
+          component={Tasks}
           options={{
-            tabBarLabel: 'Explore',
+            tabBarLabel: 'Tasks',
             tabBarIcon: ({color}) => (
-              <TabIcon screenName="Explore" name="compass" color={color} />
+              <TabIcon screenName="Tasks" name="sticker-check" color={color} />
             ),
           }}
         />
         <Tab.Screen
-          name="Search"
-          component={Search}
+          name="Discover"
+          component={Discover}
           options={{
-            tabBarLabel: 'Search',
+            tabBarLabel: 'Discover',
             tabBarIcon: ({color}) => (
-              <TabIcon screenName="Search" name="magnify" color={color} />
+              <TabIcon screenName="Discover" name="cards" color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Challenges"
+          component={Challenges}
+          options={{
+            tabBarLabel: 'Challenges',
+            tabBarIcon: ({color}) => (
+              <TabIcon
+                screenName="Challenges"
+                name="language-swift"
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Journey"
+          component={Journey}
+          options={{
+            tabBarLabel: 'Journey',
+            tabBarIcon: ({color}) => (
+              <TabIcon
+                screenName="Journey"
+                name="account-circle"
+                color={color}
+              />
             ),
           }}
         />
