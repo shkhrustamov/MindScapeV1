@@ -1,14 +1,16 @@
 import React from 'react';
 import Haptic from 'react-native-haptic-feedback';
-import {ScrollView, Text, TouchableOpacity} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import TaskHeader from '../components/TaskHeader.tsx';
+import TaskHeaderLayout from '../components/TaskHeader.tsx';
 
 const Tasks = () => {
   return (
-    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
-      <TouchableOpacity>
-        <Text>hello</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    <TaskHeaderLayout>
+      <View style={{flexGrow: 1}}>
+        <Text>wefwef</Text>
+      </View>
+    </TaskHeaderLayout>
   );
 };
 
