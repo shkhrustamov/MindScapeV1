@@ -103,7 +103,7 @@ export default function Example() {
           </Swiper>
         </View>
 
-        <View style={{flex: 1, paddingHorizontal: 16, paddingVertical: 24}}>
+        <View style={{flex: 1, paddingHorizontal: 16}}>
           <Text style={styles.subtitle}>{value.toDateString()}</Text>
         </View>
       </View>
@@ -154,12 +154,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingVertical: 24,
+    paddingVertical: 15,
   },
   picker: {
     flex: 1,
     maxHeight: 74,
-    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
   },
