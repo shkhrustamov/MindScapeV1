@@ -13,6 +13,7 @@ import Haptic from 'react-native-haptic-feedback';
 import COLORS from '../src/Constants';
 import {color} from 'react-native-elements/dist/helpers';
 import {Icon} from 'react-native-vector-icons/Icon';
+import Inbox from './screens/Inbox.tsx';
 
 const Tab = createBottomTabNavigator();
 

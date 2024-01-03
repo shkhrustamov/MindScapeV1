@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import Swiper from 'react-native-swiper';
+import Haptic from 'react-native-haptic-feedback';
 
 const {width} = Dimensions.get('window');
 
-export default function Example() {
+export default function Calendar() {
   const swiper = useRef();
   const [value, setValue] = useState(new Date());
   const [week, setWeek] = useState(0);
@@ -71,7 +72,10 @@ export default function Example() {
                   return (
                     <TouchableWithoutFeedback
                       key={dateIndex}
-                      onPress={() => handleDateSelection(item.date)}>
+                      onPress={() => {
+                        handleDateSelection(item.date);
+                        Haptic.trigger('impactLight');
+                      }}>
                       <View
                         style={[
                           styles.item,
@@ -102,10 +106,9 @@ export default function Example() {
             ))}
           </Swiper>
         </View>
-
-        <View style={{flex: 1, paddingHorizontal: 16}}>
-          <Text style={styles.subtitle}>{value.toDateString()}</Text>
-        </View>
+        {/*<View style={{flex: 1, paddingHorizontal: 16}}>*/}
+        {/*  <Text style={styles.subtitle}>{value.toDateString()}</Text>*/}
+        {/*</View>*/}
       </View>
     </SafeAreaView>
   );

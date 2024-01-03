@@ -11,6 +11,8 @@ import TaskHeader from '../components/TaskHeader.tsx';
 import TaskHeaderLayout from '../components/TaskHeader.tsx';
 import HorizontalScrollCalendar from '../components/Calendar.tsx';
 import Example from '../components/Calendar.tsx';
+import Calendar from '../components/Calendar.tsx';
+import ButtonGroup from '../components/ButtonGroup.tsx';
 
 const Tasks = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -31,7 +33,8 @@ const Tasks = () => {
             colors={['#2F80ED']}
           />
         }>
-        <Example />
+        <Calendar />
+        <ButtonGroup />
       </ScrollView>
     </TaskHeaderLayout>
   );

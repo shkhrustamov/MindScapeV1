@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Haptic from 'react-native-haptic-feedback';
+import Inbox from '../screens/Inbox.tsx';
+import {useNavigation} from '@react-navigation/native';
 
 const TaskHeaderLayout = ({children}) => {
+  const {navigate} = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.view}>
