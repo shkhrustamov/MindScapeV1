@@ -1,15 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Haptic from 'react-native-haptic-feedback';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  RefreshControl,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import TaskHeader from '../components/TaskHeader.tsx';
 import TaskHeaderLayout from '../components/TaskHeader.tsx';
+import HorizontalScrollCalendar from '../components/Calendar.tsx';
+import Example from '../components/Calendar.tsx';
 
 const Tasks = () => {
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 500);
+  };
   return (
     <TaskHeaderLayout>
-      <View style={{flexGrow: 1}}>
-        <Text>wefwef</Text>
-      </View>
+      <ScrollView
+        style={{flex: 1}}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={['#2F80ED']}
+          />
+        }>
+        <Example />
+      </ScrollView>
     </TaskHeaderLayout>
   );
 };

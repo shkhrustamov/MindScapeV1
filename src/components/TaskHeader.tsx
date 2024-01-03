@@ -27,7 +27,7 @@ const TaskHeaderLayout = ({children}) => {
             fontWeight: 'bold',
             color: '#1C2939',
           }}>
-          MindScape
+          Today
         </Text>
         <TouchableOpacity
           onPress={() => {
