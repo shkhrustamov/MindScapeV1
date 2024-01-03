@@ -37,7 +37,7 @@ const TaskHeaderLayout = ({children}) => {
             Haptic.trigger('rigid');
           }}
           style={{alignItems: 'flex-end', paddingRight: 20}}>
-          <MaterialCommunityIcons name="bell-ring" color="#1c2939" size={26} />
+          <MaterialCommunityIcons name="plus" color="#1c2939" size={26} />
         </TouchableOpacity>
       </View>
       {children}
