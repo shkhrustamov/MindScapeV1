@@ -82,7 +82,7 @@ function Navigation() {
           name="Habit"
           component={Habit}
           options={{
-            tabBarLabel: 'Habit',
+            tabBarLabel: 'Habits',
             tabBarIcon: ({color}) => (
               <TabIcon screenName="Habit" name="puzzle-check" color={color} />
             ),

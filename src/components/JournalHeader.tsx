@@ -10,7 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Haptic from 'react-native-haptic-feedback';
 import {useNavigation} from '@react-navigation/native';
 
-const TaskHeaderLayout = ({children}) => {
+const JournalHeaderLayout = ({children}) => {
   const {navigate} = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
 });
-export default TaskHeaderLayout;
+export default JournalHeaderLayout;

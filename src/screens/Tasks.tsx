@@ -1,12 +1,25 @@
-import React from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {RefreshControl, ScrollView} from 'react-native';
+import TasksTopLayout from '../components/HabitHeader.tsx';
+import TodoComponent from '../components/TodoComponent.tsx';
+import TaskButton from '../components/addTaskButton.tsx';
 
-const ToDo = () => {
+const Tasks = () => {
+  // const [refreshing, setRefreshing] = useState(false);
+  // const onRefresh = () => {
+  //   setRefreshing(true);
+  //   setTimeout(() => {
+  //     setRefreshing(false);
+  //   }, 500);
+  // };
   return (
-    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
-      <Text>hello</Text>
-    </ScrollView>
+    <TasksTopLayout>
+      <ScrollView style={{flex: 1}}>
+        <TodoComponent />
+      </ScrollView>
+      <TaskButton />
+    </TasksTopLayout>
   );
 };
 
-export default ToDo;
+export default Tasks;

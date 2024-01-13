@@ -4,7 +4,7 @@ import TaskHeaderLayout from '../components/TaskHeader.tsx';
 import Calendar from '../components/Calendar.tsx';
 import ButtonGroup from '../components/ButtonGroup.tsx';
 
-const Tasks = () => {
+const Habits = () => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = () => {
     setRefreshing(true);
@@ -30,4 +30,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default Habits;
