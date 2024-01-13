@@ -7,13 +7,11 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Tasks from './screens/Tasks.tsx';
 import Discover from './screens/Discover.tsx';
-import Challenges from './screens/Challenges.tsx';
-import Journey from './screens/Journey.tsx';
 import Haptic from 'react-native-haptic-feedback';
 import COLORS from '../src/Constants';
-import {color} from 'react-native-elements/dist/helpers';
-import {Icon} from 'react-native-vector-icons/Icon';
-import Inbox from './screens/Inbox.tsx';
+import Journal from './screens/Journal.tsx';
+import ToDo from './screens/Habit.tsx';
+import Habit from './screens/Habit.tsx';
 
 const Tab = createBottomTabNavigator();
 
@@ -81,6 +79,16 @@ function Navigation() {
           headerShown: false,
         }}>
         <Tab.Screen
+          name="Habit"
+          component={Habit}
+          options={{
+            tabBarLabel: 'Habit',
+            tabBarIcon: ({color}) => (
+              <TabIcon screenName="Habit" name="puzzle-check" color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
           name="Tasks"
           component={Tasks}
           options={{
@@ -88,7 +96,21 @@ function Navigation() {
             headerTitle: 'MindScape',
             headerTitleStyle: {color: COLORS.DARK_BLUE},
             tabBarIcon: ({color}) => (
-              <TabIcon screenName="Tasks" name="sticker-check" color={color} />
+              <TabIcon screenName="Tasks" name="progress-check" color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Journal"
+          component={Journal}
+          options={{
+            tabBarLabel: 'Journal',
+            tabBarIcon: ({color}) => (
+              <TabIcon
+                screenName="Journal"
+                name="fountain-pen-tip"
+                color={color}
+              />
             ),
           }}
         />
@@ -99,34 +121,6 @@ function Navigation() {
             tabBarLabel: 'Discover',
             tabBarIcon: ({color}) => (
               <TabIcon screenName="Discover" name="cards" color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Challenges"
-          component={Challenges}
-          options={{
-            tabBarLabel: 'Challenges',
-            tabBarIcon: ({color}) => (
-              <TabIcon
-                screenName="Challenges"
-                name="language-swift"
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Journey"
-          component={Journey}
-          options={{
-            tabBarLabel: 'Journey',
-            tabBarIcon: ({color}) => (
-              <TabIcon
-                screenName="Journey"
-                name="account-circle"
-                color={color}
-              />
             ),
           }}
         />
