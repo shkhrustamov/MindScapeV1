@@ -1,43 +1,36 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Haptic from 'react-native-haptic-feedback';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-const TaskHeaderLayout = ({children}) => {
+const TasksTopLayout = ({children}) => {
   const {navigate} = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.view}>
-        <TouchableOpacity
-          onPress={() => {
-            Haptic.trigger('rigid');
-          }}
-          style={{alignItems: 'flex-start', paddingLeft: 20}}>
-          <MaterialCommunityIcons name="menu" color="#1c2939" size={35} />
-        </TouchableOpacity>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 20,
-            fontWeight: 'bold',
-            color: '#1C2939',
-          }}>
-          Habits
-        </Text>
-        <TouchableOpacity
-          onPress={() => {
-            Haptic.trigger('rigid');
-          }}
-          style={{alignItems: 'flex-end', paddingRight: 20}}>
-          <MaterialCommunityIcons name="plus" color="#1c2939" size={26} />
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*  onPress={() => {*/}
+        {/*    Haptic.trigger('rigid');*/}
+        {/*  }}*/}
+        {/*  style={{alignItems: 'flex-start', paddingLeft: 20}}>*/}
+        {/*  <MaterialCommunityIcons name="menu" color="#1c2939" size={35} />*/}
+        {/*</TouchableOpacity>*/}
+        {/*<Text*/}
+        {/*  style={{*/}
+        {/*    justifyContent: 'center',*/}
+        {/*    textAlign: 'center',*/}
+        {/*    fontSize: 20,*/}
+        {/*    fontWeight: 'bold',*/}
+        {/*    color: '#1C2939',*/}
+        {/*  }}>*/}
+        {/*  Tasks*/}
+        {/*</Text>*/}
+        {/*<TouchableOpacity*/}
+        {/*  onPress={() => {*/}
+        {/*    Haptic.trigger('rigid');*/}
+        {/*  }}*/}
+        {/*  style={{alignItems: 'flex-end', paddingRight: 20}}>*/}
+        {/*  <MaterialCommunityIcons name="plus" color="#1c2939" size={26} />*/}
+        {/*</TouchableOpacity>*/}
       </View>
       {children}
     </SafeAreaView>
@@ -50,10 +43,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   view: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     backgroundColor: '#fff',
     paddingVertical: 8,
   },
 });
-export default TaskHeaderLayout;
+export default TasksTopLayout;

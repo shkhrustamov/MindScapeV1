@@ -10,6 +10,7 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Haptic from 'react-native-haptic-feedback';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
 
 const items = [
   {
@@ -30,15 +31,16 @@ const items = [
 
 export default function TodoRev() {
   const [tasks, setTasks] = useState(items);
+  const navigation = useNavigation();
 
   const handleToggleCheck = index => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].isChecked = !updatedTasks[index].isChecked;
-    setTasks(updatedTasks);
+    const task = tasks[index];
+    const newTask = [...items];
+    task.isChecked = !task.isChecked;
+    setTasks(newTask);
   };
-
   return (
-    <SafeAreaView style={{backgroundColor: '#fff'}}>
+    <View style={{backgroundColor: '#fff'}}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Today's Tasks</Text>
 
@@ -52,7 +54,7 @@ export default function TodoRev() {
                 Haptic.trigger('notificationSuccess');
               }}>
               <View style={[styles.cardIcon, {backgroundColor: color}]}>
-                <FeatherIcon color="#1C2939" name={icon} size={20} />
+                <FeatherIcon color="#1C2939" name={icon} size={26} />
               </View>
 
               <View style={styles.cardBody}>
@@ -70,21 +72,37 @@ export default function TodoRev() {
                   style={styles.cardIconRight}
                   color="#1C2939"
                   name="check-circle"
-                  size={20}
+                  size={26}
                 />
               ) : (
                 <FeatherIcon
                   style={styles.cardIconRight}
                   color="#1C2939"
                   name="circle"
-                  size={20}
+                  size={26}
                 />
               )}
             </TouchableOpacity>
           );
         })}
       </ScrollView>
-    </SafeAreaView>
+      <View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
+        <TouchableOpacity
+          style={{
+            bottom: 20,
+            right: 20,
+            backgroundColor: '#1C2939',
+            borderRadius: 30,
+            padding: 10,
+          }}
+          onPress={() => {
+            navigation.navigate('MyModal');
+            Haptic.trigger('rigid');
+          }}>
+          <MaterialCommunityIcons name="plus" size={30} color="white" />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
@@ -109,8 +127,8 @@ const styles = StyleSheet.create({
     textDecorationStyle: 'solid',
   },
   cardIcon: {
-    width: 46,
-    height: 46,
+    width: 56,
+    height: 56,
     borderRadius: 12,
     display: 'flex',
     alignItems: 'center',

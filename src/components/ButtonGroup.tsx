@@ -16,32 +16,35 @@ export default function ButtonGroup() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.container}>
           <View style={styles.tabs}>
-            {[{name: 'All Tasks'}, {name: 'Habits'}, {name: 'To-Do List'}].map(
-              ({name}, index) => {
-                const isActive = index === value;
+            {[
+              {name: 'All Day'},
+              {name: 'Morning'},
+              {name: 'Afternoon'},
+              {name: 'Evening'},
+            ].map(({name}, index) => {
+              const isActive = index === value;
 
-                return (
-                  <TouchableOpacity
-                    key={name}
-                    onPress={() => {
-                      setValue(index);
-                    }}
-                    style={styles.tabsItemWrapper}>
-                    <View style={styles.tabsItem}>
-                      <Text
-                        style={[
-                          styles.tabsItemText,
-                          isActive && {color: '#1c2939'},
-                        ]}>
-                        {name}
-                      </Text>
-                    </View>
+              return (
+                <TouchableOpacity
+                  key={name}
+                  onPress={() => {
+                    setValue(index);
+                  }}
+                  style={styles.tabsItemWrapper}>
+                  <View style={styles.tabsItem}>
+                    <Text
+                      style={[
+                        styles.tabsItemText,
+                        isActive && {color: '#1c2939'},
+                      ]}>
+                      {name}
+                    </Text>
+                  </View>
 
-                    {isActive && <View style={styles.tabsItemLine} />}
-                  </TouchableOpacity>
-                );
-              },
-            )}
+                  {isActive && <View style={styles.tabsItemLine} />}
+                </TouchableOpacity>
+              );
+            })}
           </View>
         </View>
       </ScrollView>

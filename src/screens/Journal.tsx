@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import TasksTopLayout from '../components/HabitHeader.tsx';
+import TasksTopLayout from '../components/TaskHeader.tsx';
 
 const Journey = () => {
   return (
