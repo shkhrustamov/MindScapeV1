@@ -1,7 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {
   StyleSheet,
-  SafeAreaView,
   ScrollView,
   Text,
   View,
@@ -9,7 +8,6 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Haptic from 'react-native-haptic-feedback';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import {TasksContext} from '../contexts/TasksContext.tsx';
 
@@ -35,16 +33,23 @@ export default function TodoRev() {
   const navigation = useNavigation();
 
   const tasks = tasksManager?.tasks || [];
-
-  console.log(tasks);
   const setTasks = tasksManager?.setTasks;
 
-  const handleToggleCheck = index => {
-    const newt = [...tasks];
-    newt[index].isChecked = !newt[index].isChecked;
+  const handleToggleCheck = async index => {
+    const newTasks = [...tasks];
+    newTasks[index].isChecked = !newTasks[index].isChecked;
 
-    setTasks(newt);
+    setTasks(newTasks);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const updatedTasks = [
+      ...newTasks.slice(0, index),
+      ...newTasks.slice(index + 1),
+    ];
+    setTasks(updatedTasks);
   };
+
   return (
     <View style={{backgroundColor: '#fff'}}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -57,6 +62,7 @@ export default function TodoRev() {
               style={styles.card}
               onPress={() => {
                 handleToggleCheck(index);
+                Haptic.trigger('impactHeavy');
                 Haptic.trigger('notificationSuccess');
               }}>
               <View style={[styles.cardIcon, {backgroundColor: color}]}>
