@@ -14,6 +14,7 @@ import Habit from './screens/Habit.tsx';
 import {Modal1} from './components/TaskButton.tsx';
 import {createStackNavigator} from '@react-navigation/stack';
 import ModalScreen from './components/TaskModal.tsx';
+import {TasksProvider} from './contexts/TasksContext.tsx';
 
 const Tab = createBottomTabNavigator();
 
@@ -121,13 +122,15 @@ function Tabs() {
 
 function Navigation() {
   return (
-    <NavigationContainer>
-      <RootStack.Navigator
-        screenOptions={{headerShown: false, presentation: 'modal'}}>
-        <RootStack.Screen name="Tabs" component={Tabs} />
-        <RootStack.Screen name="MyModal" component={ModalScreen} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <TasksProvider>
+      <NavigationContainer>
+        <RootStack.Navigator
+          screenOptions={{headerShown: false, presentation: 'modal'}}>
+          <RootStack.Screen name="Tabs" component={Tabs} />
+          <RootStack.Screen name="MyModal" component={ModalScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </TasksProvider>
   );
 }
 

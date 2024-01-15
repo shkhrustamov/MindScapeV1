@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -11,6 +11,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import Haptic from 'react-native-haptic-feedback';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
+import {TasksContext} from '../contexts/TasksContext.tsx';
 
 const items = [
   {
@@ -30,14 +31,19 @@ const items = [
 ];
 
 export default function TodoRev() {
-  const [tasks, setTasks] = useState(items);
+  const tasksManager = useContext(TasksContext);
   const navigation = useNavigation();
 
+  const tasks = tasksManager?.tasks || [];
+
+  console.log(tasks);
+  const setTasks = tasksManager?.setTasks;
+
   const handleToggleCheck = index => {
-    const task = tasks[index];
-    const newTask = [...items];
-    task.isChecked = !task.isChecked;
-    setTasks(newTask);
+    const newt = [...tasks];
+    newt[index].isChecked = !newt[index].isChecked;
+
+    setTasks(newt);
   };
   return (
     <View style={{backgroundColor: '#fff'}}>
@@ -86,22 +92,6 @@ export default function TodoRev() {
           );
         })}
       </ScrollView>
-      <View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
-        <TouchableOpacity
-          style={{
-            bottom: 20,
-            right: 20,
-            backgroundColor: '#1C2939',
-            borderRadius: 30,
-            padding: 10,
-          }}
-          onPress={() => {
-            navigation.navigate('MyModal');
-            Haptic.trigger('rigid');
-          }}>
-          <MaterialCommunityIcons name="plus" size={30} color="white" />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

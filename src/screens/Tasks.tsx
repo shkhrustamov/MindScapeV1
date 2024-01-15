@@ -10,6 +10,7 @@ const Tasks = () => {
       <ScrollView style={{flex: 1}}>
         <TodoComponent />
       </ScrollView>
+      <TaskButton />
     </TasksTopLayout>
   );
 };

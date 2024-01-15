@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Button,
   SafeAreaView,
@@ -8,12 +8,25 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {TasksContext} from '../contexts/TasksContext.tsx';
 
 export default function TaskModal({navigation}) {
+  const tasksManager = useContext(TasksContext);
   const [form, setForm] = useState({
-    email: '',
-    password: '',
+    label: '',
+    category: '',
   });
+
+  const handleAddTask = () => {
+    tasksManager?.addTask({
+      icon: 'github',
+      label: form.label,
+      category: form.category,
+      color: '#000',
+      isChecked: false,
+    });
+  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={styles.container}>
@@ -31,11 +44,11 @@ export default function TaskModal({navigation}) {
               autoCapitalize="none"
               autoCorrect={false}
               keyboardType="email-address"
-              onChangeText={email => setForm({...form, email})}
+              onChangeText={label => setForm({...form, label})}
               placeholder="ex. Groceries"
               placeholderTextColor="#6b7280"
               style={styles.inputControl}
-              value={form.email}
+              value={form.label}
             />
           </View>
 
@@ -44,18 +57,19 @@ export default function TaskModal({navigation}) {
 
             <TextInput
               autoCorrect={false}
-              onChangeText={password => setForm({...form, password})}
+              onChangeText={category => setForm({...form, category})}
               placeholder="Biedronka Ochota"
               placeholderTextColor="#6b7280"
               style={styles.inputControl}
               secureTextEntry={false}
-              value={form.password}
+              value={form.category}
             />
           </View>
 
           <View style={styles.formAction}>
             <TouchableOpacity
               onPress={() => {
+                handleAddTask();
                 navigation.goBack();
               }}>
               <View style={styles.btn}>
