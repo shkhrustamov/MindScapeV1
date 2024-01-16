@@ -5,11 +5,22 @@ import {
   Text,
   View,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Haptic from 'react-native-haptic-feedback';
 import {useNavigation} from '@react-navigation/native';
 import {TasksContext} from '../contexts/TasksContext.tsx';
+import TaskButton from './TaskButton.tsx';
+import Animated, {
+  BounceOut,
+  BounceOutLeft,
+  FadeIn,
+  FadeInLeft,
+  FadeOut,
+  ZoomOutEasyUp,
+} from 'react-native-reanimated';
+import * as inspector from 'inspector';
 
 const items = [
   {
@@ -36,75 +47,80 @@ export default function TodoRev() {
   const setTasks = tasksManager?.setTasks;
 
   const handleToggleCheck = async index => {
-    const newTasks = [...tasks];
+    let newTasks = [...tasks];
     newTasks[index].isChecked = !newTasks[index].isChecked;
 
     setTasks(newTasks);
+    const stasks = [...newTasks];
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    const updatedTasks = [
-      ...newTasks.slice(0, index),
-      ...newTasks.slice(index + 1),
-    ];
-    setTasks(updatedTasks);
+    setTimeout(() => {
+      stasks[index] = undefined;
+      setTasks(stasks.filter(i => i !== undefined));
+    }, 200);
   };
 
   return (
-    <View style={{backgroundColor: '#fff'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Today's Tasks</Text>
+        {tasks.length
+          ? tasks?.map(({icon, label, category, color, isChecked}, index) => {
+              return (
+                <Animated.View
+                  key={index}
+                  // entering={FadeIn}
+                  exiting={BounceOutLeft}>
+                  <TouchableOpacity
+                    style={styles.card}
+                    onPress={() => {
+                      handleToggleCheck(index);
+                      Haptic.trigger('impactHeavy');
+                      Haptic.trigger('notificationSuccess');
+                    }}>
+                    <View style={[styles.cardIcon, {backgroundColor: color}]}>
+                      <FeatherIcon color="#1C2939" name={icon} size={26} />
+                    </View>
 
-        {tasks.map(({icon, label, category, color, isChecked}, index) => {
-          return (
-            <TouchableOpacity
-              key={index}
-              style={styles.card}
-              onPress={() => {
-                handleToggleCheck(index);
-                Haptic.trigger('impactHeavy');
-                Haptic.trigger('notificationSuccess');
-              }}>
-              <View style={[styles.cardIcon, {backgroundColor: color}]}>
-                <FeatherIcon color="#1C2939" name={icon} size={26} />
-              </View>
-
-              <View style={styles.cardBody}>
-                <Text
-                  style={[
-                    styles.cardTitle,
-                    isChecked ? styles.completedText : null,
-                  ]}>
-                  {label}
-                </Text>
-                <Text style={styles.cardCategory}>{category}</Text>
-              </View>
-              {isChecked ? (
-                <FeatherIcon
-                  style={styles.cardIconRight}
-                  color="#1C2939"
-                  name="check-circle"
-                  size={26}
-                />
-              ) : (
-                <FeatherIcon
-                  style={styles.cardIconRight}
-                  color="#1C2939"
-                  name="circle"
-                  size={26}
-                />
-              )}
-            </TouchableOpacity>
-          );
-        })}
+                    <View style={styles.cardBody}>
+                      <Text
+                        style={[
+                          styles.cardTitle,
+                          isChecked ? styles.completedText : null,
+                        ]}>
+                        {label}
+                      </Text>
+                      <Text style={styles.cardCategory}>{category}</Text>
+                    </View>
+                    {isChecked ? (
+                      <FeatherIcon
+                        style={styles.cardIconRight}
+                        color="#1C2939"
+                        name="check-circle"
+                        size={26}
+                      />
+                    ) : (
+                      <FeatherIcon
+                        style={styles.cardIconRight}
+                        color="#1C2939"
+                        name="circle"
+                        size={26}
+                      />
+                    )}
+                  </TouchableOpacity>
+                </Animated.View>
+              );
+            })
+          : null}
       </ScrollView>
-    </View>
+      <TaskButton />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     padding: 24,
+    // flex: 1,
   },
   title: {
     fontSize: 32,

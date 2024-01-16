@@ -22,7 +22,7 @@ export default function TaskModal({navigation}) {
       icon: 'github',
       label: form.label,
       category: form.category,
-      color: '#000',
+      color: '#e1e7f0',
       isChecked: false,
     });
   };

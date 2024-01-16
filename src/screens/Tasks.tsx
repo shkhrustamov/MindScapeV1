@@ -5,14 +5,7 @@ import TodoComponent from '../components/TodoComponent.tsx';
 import TaskButton from '../components/TaskButton.tsx';
 
 const Tasks = () => {
-  return (
-    <TasksTopLayout>
-      <ScrollView style={{flex: 1}}>
-        <TodoComponent />
-      </ScrollView>
-      <TaskButton />
-    </TasksTopLayout>
-  );
+  return <TodoComponent />;
 };
 
 export default Tasks;

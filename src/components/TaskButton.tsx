@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 const TaskButton = () => {
   const navigation = useNavigation();
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{justifyContent: 'center', alignItems: 'center'}}>
       <TouchableOpacity
         style={{
           position: 'absolute',
