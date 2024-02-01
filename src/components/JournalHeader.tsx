@@ -29,7 +29,7 @@ const JournalHeaderLayout = ({children}) => {
             fontWeight: 'bold',
             color: '#1C2939',
           }}>
-          Habits
+          Journal
         </Text>
         <TouchableOpacity
           onPress={() => {

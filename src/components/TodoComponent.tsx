@@ -12,15 +12,7 @@ import Haptic from 'react-native-haptic-feedback';
 import {useNavigation} from '@react-navigation/native';
 import {TasksContext} from '../contexts/TasksContext.tsx';
 import TaskButton from './TaskButton.tsx';
-import Animated, {
-  BounceOut,
-  BounceOutLeft,
-  FadeIn,
-  FadeInLeft,
-  FadeOut,
-  ZoomOutEasyUp,
-} from 'react-native-reanimated';
-import * as inspector from 'inspector';
+import Animated, {BounceOutLeft, FadeIn} from 'react-native-reanimated';
 
 const items = [
   {
@@ -31,7 +23,7 @@ const items = [
     isChecked: true,
   },
   {
-    icon: 'github',
+    icon: 'truck',
     label: 'Groceries',
     category: '02:40 pm',
     color: '#f6f6f6',
@@ -68,7 +60,7 @@ export default function TodoRev() {
               return (
                 <Animated.View
                   key={index}
-                  // entering={FadeIn}
+                  entering={FadeIn}
                   exiting={BounceOutLeft}>
                   <TouchableOpacity
                     style={styles.card}
@@ -120,7 +112,6 @@ export default function TodoRev() {
 const styles = StyleSheet.create({
   container: {
     padding: 24,
-    // flex: 1,
   },
   title: {
     fontSize: 32,

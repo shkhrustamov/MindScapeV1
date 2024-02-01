@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import TasksTopLayout from '../components/TaskHeader.tsx';
+import JournalHeaderLayout from '../components/JournalHeader.tsx';
+import Journaling from '../components/Journaling.tsx';
 
 const Journey = () => {
   return (
-    <TasksTopLayout>
+    <JournalHeaderLayout>
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Journal</Text>
+        <Journaling />
       </View>
-    </TasksTopLayout>
+    </JournalHeaderLayout>
   );
 };
 

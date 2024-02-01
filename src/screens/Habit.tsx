@@ -3,6 +3,7 @@ import {RefreshControl, ScrollView} from 'react-native';
 import TaskHeaderLayout from '../components/HabitHeader.tsx';
 import Calendar from '../components/Calendar.tsx';
 import ButtonGroup from '../components/ButtonGroup.tsx';
+import HabitComponent from '../components/HabitComponent.tsx';
 
 const Habits = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -25,6 +26,7 @@ const Habits = () => {
         }>
         <Calendar />
         <ButtonGroup />
+        <HabitComponent />
       </ScrollView>
     </TaskHeaderLayout>
   );

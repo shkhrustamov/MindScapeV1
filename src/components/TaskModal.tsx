@@ -19,7 +19,7 @@ export default function TaskModal({navigation}) {
 
   const handleAddTask = () => {
     tasksManager?.addTask({
-      icon: 'github',
+      icon: 'circle-check',
       label: form.label,
       category: form.category,
       color: '#e1e7f0',
