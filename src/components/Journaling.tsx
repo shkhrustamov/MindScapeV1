@@ -9,9 +9,7 @@ import {
 
 const items = [
   {
-    label: 'general',
-    users: 1023,
-    description: 'Write your first entry',
+    label: 'Whats on your mind?',
   },
 ];
 
@@ -21,7 +19,9 @@ export default function Journaling() {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={styles.container}>
-        {items.map(({label, users, description}, index) => {
+        {/*<Text style={styles.title}>Channels</Text>*/}
+
+        {items.map(({label}, index) => {
           const isActive = value === index;
           return (
             <TouchableOpacity
@@ -30,7 +30,9 @@ export default function Journaling() {
                 setValue(index);
               }}>
               <View style={[styles.radio, isActive && styles.radioActive]}>
-                <Text style={styles.radioDescription}>{description}</Text>
+                <View style={styles.radioTop}>
+                  <Text style={styles.radioLabel}>{label}</Text>
+                </View>
               </View>
             </TouchableOpacity>
           );
@@ -53,11 +55,11 @@ const styles = StyleSheet.create({
   /** Radio */
   radio: {
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#1C2939',
     marginBottom: 12,
     padding: 12,
     borderRadius: 6,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     borderWidth: 2,
     borderColor: 'transparent',
     shadowColor: '#000',
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   radioActive: {
-    borderColor: '#0069fe',
+    borderColor: '#1C2939',
   },
   radioTop: {
     width: '100%',
@@ -80,9 +82,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   radioLabel: {
+    textAlign: 'center',
     fontSize: 15,
     fontWeight: '600',
-    color: '#111827',
+    color: '#fff',
   },
   radioUsers: {
     fontSize: 14,
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
     color: '#2f2f2f',
   },
   radioDescription: {
+    textAlign: 'center',
     fontSize: 15,
     fontWeight: '400',
     color: '#848a96',

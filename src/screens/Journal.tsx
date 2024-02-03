@@ -6,9 +6,9 @@ import Journaling from '../components/Journaling.tsx';
 const Journey = () => {
   return (
     <JournalHeaderLayout>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Journaling />
-      </View>
+      {/*<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>*/}
+      <Journaling />
+      {/*</View>*/}
     </JournalHeaderLayout>
   );
 };

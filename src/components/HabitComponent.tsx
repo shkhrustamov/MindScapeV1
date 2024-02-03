@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,13 +8,22 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import {TasksContext} from '../contexts/TasksContext.tsx';
+import {useNavigation} from '@react-navigation/native';
 
 const items = [
   {
     icon: 'truck',
     label: 'Brush teeth',
     category: '2/2',
-    color: '#ff9773',
+    color: '#fafafafa',
+    price: 64.4,
+  },
+  {
+    icon: 'truck',
+    label: 'Brush teeth',
+    category: '2/2',
+    color: '#fafafafa',
     price: 64.4,
   },
 ];
@@ -39,7 +48,12 @@ export default function HabitComponent() {
                 <Text style={styles.cardCategory}>{category}</Text>
               </View>
 
-              <Text style={styles.cardPrice}>${price.toFixed(2)}</Text>
+              <FeatherIcon
+                style={styles.cardPrice}
+                color="#1C2939"
+                name="check-circle"
+                size={26}
+              />
             </TouchableOpacity>
           );
         })}
@@ -60,6 +74,7 @@ const styles = StyleSheet.create({
   },
 
   card: {
+    marginVertical: 7,
     borderWidth: 2,
     borderRadius: 20,
     padding: 12,
@@ -93,8 +108,8 @@ const styles = StyleSheet.create({
   },
   cardPrice: {
     marginLeft: 'auto',
-    fontSize: 17,
+    fontSize: 27,
     fontWeight: '700',
-    color: '#2c9d3b',
+    color: '#fff',
   },
 });

@@ -11,10 +11,10 @@ import Haptic from 'react-native-haptic-feedback';
 import COLORS from '../src/Constants';
 import Journal from './screens/Journal.tsx';
 import Habit from './screens/Habit.tsx';
-import {Modal1} from './components/TaskButton.tsx';
 import {createStackNavigator} from '@react-navigation/stack';
 import ModalScreen from './components/TaskModal.tsx';
 import {TasksProvider} from './contexts/TasksContext.tsx';
+import Intro from './screens/Intro.tsx';
 
 const Tab = createBottomTabNavigator();
 
